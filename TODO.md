@@ -14,18 +14,28 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 
 ###Doing:
 
-- Meet on Saturday at 1:30pm
+- Meet Saturday at 7:30pm
 
 ### Regular Priority:
 
-- Create an interaction/API diagram for the app.
-- Determine the model structure for articles.
-- Layout home/article/edit pages
+- Create home/article/edit pages
+- Enable routing with react-router
 - Document each component
 
 ###Low priority:
 
-- Enable Mongodb connections instead of reading&saving from file.
 - CSS for layout
 - push copypastas into database
+
+###Done:
+
+- Meet on Saturday at 1:30pm
+- Create an interaction/API diagram for the app.
+- Determine the model structure for articles.
+- Enable Mongodb connections instead of reading&saving from file.
+- Layout home/article/edit pages
+
+
+
+
 
