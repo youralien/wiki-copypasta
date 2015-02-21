@@ -12,9 +12,7 @@ var listComments = function(req, res) {
 };
 
 var addComment = function(req, res) {
-	comment;
-	var newComment = new Comment(comment);
-
+	var newComment = new Comment(req.body.comment);
 	newComment.save(function(err, comment, numAffected) {
 		if (err || (numAffected !== 1)) errorHandler(err, req, res);
 		listComments(req, res);
