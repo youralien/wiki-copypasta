@@ -10,6 +10,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+ /**
+ * server.js
+ * run using "node server.js"
+ * imports all packages, and includes all routes of website
+ */
+
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
