@@ -23,7 +23,7 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 - Layout home/article/edit pages
 - Document each component
 
-#Low priority:
+###Low priority:
 
 - Enable Mongodb connections instead of reading&saving from file.
 - CSS for layout
