@@ -10,6 +10,24 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/** example.js
+
+This script should live in public/scripts/
+For the Facebook ReactJS example tutorial, this file defines the React components
+for creating a comment section.  The following is a hierarchy of the React component
+classes:
+
+CommentBox
+  |
+  |__CommentList
+  |   |
+  |   |__Comment
+  |   |__Comment
+  |   |__{...}
+  |
+  |__CommentForm
+ 
+ */
 var converter = new Showdown.converter();
 
 var Comment = React.createClass({
