@@ -1,3 +1,8 @@
+'use strict';
+
+// enables JSX requires
+require('node-jsx').install({ extension: '.jsx' });
+
 /**
  * This file provided by Facebook is for non-commercial testing and evaluation purposes only.
  * Facebook reserves all rights not expressly granted.
@@ -16,12 +21,12 @@
  * imports all packages, and includes all routes of website
  */
 
-var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var serverRender = require('./serverRenderer.jsx');
 var comment = require('./routes/comment');
 var app = express();
 
@@ -29,12 +34,20 @@ var app = express();
 var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 mongoose.connect(mongoURI);
 
-app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+var publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
+// API calls
 app.get('/comments', comment.list);
 app.post('/comments', comment.add);
+
+// App with fancy rendering
+app.use('/', serverRender);
+
+// app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.listen(3000);
 
