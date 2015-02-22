@@ -14,12 +14,17 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 
 ###Doing:
 
-- Meet Saturday at 7:30pm
+- Meet Monday at 8:00 pm
 
 ### Regular Priority:
 
-- Create home/article/edit pages
-- Enable routing with react-router
+- Create React components for the Wiki pages
+ - Article
+ - Edit
+ - ArticleList
+ - MainHeader
+- Arrange components into home/article/edit routes
+- Hooking in Mongo Pages model into React
 - Document each component
 
 ###Low priority:
@@ -29,6 +34,8 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 
 ###Done:
 
+- Meet Saturday at 7:30pm
+- Enable routing with react-router
 - Meet on Saturday at 1:30pm
 - Create an interaction/API diagram for the app.
 - Determine the model structure for articles.
