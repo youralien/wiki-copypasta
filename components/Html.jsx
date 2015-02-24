@@ -1,3 +1,10 @@
+/*
+* Included in serverRenderer.jsx
+* Contains HTML head for all webpages rendered
+* Also includes base.css here
+* Has its content set by passing in markup variable
+*/
+
 'use strict';
 var React = require('react');
 
