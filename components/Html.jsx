@@ -9,7 +9,7 @@ render: function() {
       <head>
         <title>{ this.props.title }</title>
         <link rel="icon" type="image/png" href="/images/favicon.png" />
-        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/base.css" />
         <script src="/js/lib.js"></script>
         <script src="/js/main.js"></script>
       </head>

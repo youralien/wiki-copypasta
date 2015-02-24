@@ -65,3 +65,14 @@ p, ul {
 ul {
   padding-left: 30px;
 }
+
+.master
+{
+  float: left;
+  padding-right: 30px;
+}
+
+.detail {
+  float: left; width:70%;}
+  .detail img {
+    width: 600px; }
