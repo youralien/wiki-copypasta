@@ -91,6 +91,7 @@ var CommentBox = React.createClass({
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <MarkdownEditor />
       </div>
     );
   }
@@ -115,6 +116,43 @@ var CommentList = React.createClass({
     );
   }
 });
+
+var converter = new Showdown.converter();
+
+var MarkdownEditor = React.createClass({
+
+  getInitialState: function() {
+    return {value: 'Type some *markdown* here!'};
+  },
+  handleChange: function() {
+    this.setState({value: this.refs.textarea.getDOMNode().value});
+  },
+  // TODO: Make Preview Scrollable, so you can view the live edits of the article below
+  //       http://stackoverflow.com/questions/11298093/css-force-child-element-to-fit-into-parent-element
+  render: function() {
+    return (
+
+      <div className="MarkdownEditor">
+        <h3>Input</h3>
+        <textarea
+          onChange={this.handleChange}
+          ref="textarea"
+          defaultValue={this.state.value} />
+        
+        <h3>Preview</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{
+            __html: converter.makeHtml(this.state.value)
+          }}
+        />
+      </div>
+    );
+  }
+});
+
+// var PreviewButton = React.createClass({
+
 
 var CommentForm = React.createClass({
   handleSubmit: function(e) {

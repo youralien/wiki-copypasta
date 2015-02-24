@@ -10,7 +10,8 @@
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
     "react-document-title": "^1.0.1",
-    "react-router": "^0.12.0"
+    "react-router": "^0.12.0",
+    "showdown": "^0.3.1"
   },
   "devDependencies": {},
   "scripts": {
