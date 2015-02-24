@@ -1,3 +1,10 @@
+/*
+* Template for all react routes.
+* Contains Title, and sidebar with list of articles
+* with <RouteHandler /> call for 
+* insertion of the page-specific content
+*/
+
 "use strict";
 
 var React         = require('react');
@@ -8,7 +15,7 @@ var RouteHandler  = Router.RouteHandler;
 var Link          = Router.Link;
 
 var data  = require('../public/data/places');
-var title = "Some places in Italy";
+var title = "Pastapedia, the Copypasta Wiki";
 
 var App = React.createClass({
 
