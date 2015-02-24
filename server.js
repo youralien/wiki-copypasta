@@ -28,6 +28,7 @@ var mongoose = require('mongoose');
 
 var serverRender = require('./serverRenderer.jsx');
 var comment = require('./routes/comment');
+var article = require('./routes/article');
 var app = express();
 
 // mongoose database
@@ -43,6 +44,9 @@ app.use(express.static(publicPath));
 // API calls
 app.get('/comments', comment.list);
 app.post('/comments', comment.add);
+app.get('/article/:id/json', article.get);
+app.post('/article/:id/edit', article.edit);
+app.get('/list/articles/json', article.list);
 
 // App with fancy rendering
 app.use('/', serverRender);
