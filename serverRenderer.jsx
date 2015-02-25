@@ -1,3 +1,12 @@
+/*
+* used by express app
+* responsible for executing the Router.run call.
+* Also has a todo for going with the 404 status code
+* which could be resolved by:
+* 	let isNotFound = state.routes.some(route => route.name == 'not-found')
+* 	res.status(isNotFound ? 404 : 200).send('<!DOCTYPE html>' + html);
+*/
+
 'use strict';
 
 var React         = require('react');
