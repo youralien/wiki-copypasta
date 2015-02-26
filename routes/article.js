@@ -1,4 +1,4 @@
-var Article = require('../models/Article');
+var Article = require('../models/ArticleModel');
 var errorHandler = require('./errorHandler');
 
 var listArticles = function(req, res) {
