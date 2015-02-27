@@ -7,7 +7,7 @@ module.exports = {
 
   // Create also a "lib" chunk with common libraries, e.g. react.
   entry: {
-    lib: ['react', 'react-router'],
+    lib: ['react', 'react-router', 'showdown'],
     main: './client.jsx'
   },
 
@@ -43,5 +43,7 @@ module.exports = {
     }]
   },
 
-  externals: {}
+  externals: {
+    fs: 'null'
+  }
 };
