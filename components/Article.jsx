@@ -22,11 +22,40 @@ function findWikiPage(id) {
 var Article = React.createClass({
   mixins: [ Router.State ], //used to get id of article, so as to find the correct article to render.
 
+  loadCommentsFromServer: function() {
+    $.ajax({
+      url: "json",
+      dataType: 'json',
+      success: function(data) {
+        this.setState({data: data});
+        this.render()
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  getInitialState: function() {
+    return {data: {}};
+  },
+  componentDidMount: function() {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, 2000); //TODO set 2000 dynamically, eg with this.props.pollInterval
+  },
+  componentWillMont: function() {
+    this.data = {"article": null};
+  },
+
   render: function () {
 
-    var article = findWikiPage(this.getParams().id);
+    
+    var article = this.data;//findWikiPage(this.getParams().id);
+
+    console.log(article);
 
     if (!article) return <NoArticle />; //instead renders page as "no article found", etc., in accordance with NoArticle.jsx
+
+    // if (article.)
 
     var tags = article.tags.map(function (tag) {
       return (

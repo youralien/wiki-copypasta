@@ -19,6 +19,7 @@ var routes = (
     <DefaultRoute name="index" handler={Index} />
     <Route name="place" path="place/:id" handler={Place} />
     <Route name="article" path="article/:id" handler={Article} />
+    <Route name="articleslash" path="article/:id/" handler={Article} /> //TODO: Replace hotfix with more generalized system
     <Route name='edit' path='article/:id/edit' handler={Edit} />
     <NotFoundRoute name="notfound" handler={ NotFound }/>
   </Route>
