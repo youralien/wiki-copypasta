@@ -1,3 +1,7 @@
+/**
+ * Basic 404 page, improved by being within a template
+ */
+
 'use strict';
 var React = require('react');
 
