@@ -1,7 +1,9 @@
 /*
-* Main code for rendering the wiki article itself
-* uses findWikiPage to grab the page from the database,
-* then returns article body in HTML
+* Code for rendering the wiki article itself
+* uses ajax JSON query to grab article from the database,
+* and uses Showdown converter to translate markdown
+* Also contains link to edit article page, and a changing prompt
+* if the database query returns a null article
 */
 
 'use strict';
@@ -36,14 +38,19 @@ var Article = React.createClass({
     // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
-    var edittext = "Edit article"
-    var rawMarkup = "finding content"
+    var edittext = "Edit article";
+    var rawMarkup = "finding content";
     if (this.state.data.article) {
-      rawMarkup = converter.makeHtml(this.state.data.article.text.toString())
+      if (this.state.data.article.text) {
+        rawMarkup = converter.makeHtml(this.state.data.article.text.toString());
+      }
+      else {
+        rawMarkup = "";
+      }
     }
     else {
-      rawMarkup = "No Article Found!"
-      edittext = "Create new article?"
+      rawMarkup = "No Article Found!";
+      edittext = "Create new article?";
     }
 
     return (
@@ -53,7 +60,9 @@ var Article = React.createClass({
             <h2>{ this.getParams().id }</h2>
           </div>
           <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
-          <a href={this.getParams().id+"/edit"}>{edittext}</a>
+          <div className="editlink">
+            <a href={this.getParams().id+"/edit"}>{edittext}</a>
+          </div>
         </div>
       </DocumentTitle>
     );
