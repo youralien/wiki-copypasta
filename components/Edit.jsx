@@ -27,6 +27,9 @@ var MarkdownEditor = React.createClass({
       }.bind(this)
     });
   },
+  redirectPostEdit: function() {
+    this.transitionTo('article', {id: this.getParams().id});
+  },
   getInitialState: function() {
     return {name: '', text: ''};
   },
@@ -46,10 +49,7 @@ var MarkdownEditor = React.createClass({
     $.post(
       '/article/' + this.getParams().id + '/edit',
       {name: name, text: text},
-      function(data) {
-        // redirect to article page post-edits
-        this.transitionTo('article', {id: this.getParams().id});
-      }
+      this.redirectPostEdit
     );
     this.refs.name.getDOMNode().value = '';
     this.refs.text.getDOMNode().value = '';
