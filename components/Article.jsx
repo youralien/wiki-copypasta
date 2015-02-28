@@ -9,48 +9,51 @@
 var React         = require('react');
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
+var Showdown      = require('showdown');
 
-var NoArticle     = require('./NoArticle.jsx'); 
 
-
-//TODO: Change this to correctly query database
-function findWikiPage(id) {
-  var forcedarticle = {name: id, text: "Hi Fred", tags: ["Fred","Hi"]};
-  return null
-}
+var converter = new Showdown.converter();
 
 var Article = React.createClass({
-  mixins: [ Router.State ], //used to get id of article, so as to find the correct article to render.
-
-  render: function () {
-
-    var article = findWikiPage(this.getParams().id);
-
-    if (!article) return <NoArticle />; //instead renders page as "no article found", etc., in accordance with NoArticle.jsx
-
-    var tags = article.tags.map(function (tag) {
-      return (
-        <li key={"tag-" + tag}>
-          { tag }
-        </li>
-      );
+  mixins: [ Router.State ],
+  loadArticlesFromServer: function() {
+    $.ajax({
+      url: '/article/'+this.getParams().id+'/json',
+      dataType: 'json',
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
     });
+  },
+  getInitialState: function() {
+    return {data: {}};
+  },
+  componentDidMount: function() {
+    this.loadArticlesFromServer();
+    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  },
+  render: function() {
+    var edittext = "Edit article"
+    var rawMarkup = "finding content"
+    if (this.state.data.article) {
+      rawMarkup = converter.makeHtml(this.state.data.article.text.toString())
+    }
+    else {
+      rawMarkup = "No Article Found!"
+      edittext = "Create new article?"
+    }
 
-    return(
-      <DocumentTitle title ={ article.name }>
-        <div className = "article">
+    return (
+      <DocumentTitle title ={ this.getParams().id+" - Pastapedia" }>
+        <div className="article">
           <div className="articletitle">
-            <h2>{ article.name }</h2>
+            <h2>{ this.getParams().id }</h2>
           </div>
-          <div className = "tagtitle">
-            Tags:
-          </div>
-          <div className = "tags">
-            { tags }
-          </div>
-          <div className="articlecontent">
-            <p>{ article.text }</p>
-          </div>
+          <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+          <a href={this.getParams().id+"/edit"}>{edittext}</a>
         </div>
       </DocumentTitle>
     );
