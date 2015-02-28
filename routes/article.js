@@ -1,3 +1,10 @@
+/**
+ * contains all API route handlers for app,
+ * which get list of articles,
+ * find a specific article,
+ * or post a request to edit an article.
+ */
+
 var Article = require('../models/ArticleModel');
 var errorHandler = require('./errorHandler');
 
