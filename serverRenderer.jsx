@@ -1,6 +1,8 @@
-/*
-* used by express app
+/**
+* react router instance used by express app
 * responsible for executing the Router.run call.
+* and including Html.jsx as the base of all code.
+* 
 * Also has a todo for going with the 404 status code
 * which could be resolved by:
 * 	let isNotFound = state.routes.some(route => route.name == 'not-found')

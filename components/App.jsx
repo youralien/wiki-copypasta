@@ -1,8 +1,10 @@
-/*
+/**
 * Template for all react routes.
-* Contains Title, and sidebar with list of articles
-* with <RouteHandler /> call for 
-* insertion of the page-specific content
+* Contains Title, and sidebar with links to 
+* homepage and a list of all articles.
+* 
+* Includes <RouteHandler /> call for 
+* insertion of the page-specific content.
 */
 
 "use strict";

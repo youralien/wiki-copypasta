@@ -1,3 +1,14 @@
+/**
+* Includes all the routes in the app
+* routes are case and endslash sensitive
+* Some routes are repeated with endslash
+* for user convenience.
+*
+* Note App is the root of all pages rendered,
+* Though it doesn't have to be configured in this way 
+* for all react-router websites.
+*/
+
 'use strict';
 
 var React         = require('react');
