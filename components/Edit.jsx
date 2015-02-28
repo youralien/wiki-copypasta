@@ -10,13 +10,31 @@ var NotFound      = require('./NotFound.jsx');
 var converter = new Showdown.converter();
 
 var MarkdownEditor = React.createClass({
-  mixins: [Router.State],
-
+  mixins: [Router.State, Router.Navigation],
+  
+  getArticleFromServer: function() {
+    $.ajax({
+      url: '/article/' + this.getParams().id + '/json',
+      dataType: 'json',
+      success: function(data) {
+        this.setState({
+          name: data.article.name,
+          text: data.article.text
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error('/article/' + this.getParams().id + '/edit', status, err.toString());
+      }.bind(this)
+    });
+  },
   getInitialState: function() {
-    return {value: 'Type some *markdown* here!'};
+    return {name: '', text: ''};
+  },
+  componentDidMount: function() {
+    this.getArticleFromServer();
   },
   handleChange: function() {
-    this.setState({value: this.refs.text.getDOMNode().value});
+    this.setState({text: this.refs.text.getDOMNode().value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
@@ -26,13 +44,13 @@ var MarkdownEditor = React.createClass({
       return;
     }
     $.post(
-      '/article/'+name+'/edit',
+      '/article/' + this.getParams().id + '/edit',
       {name: name, text: text},
       function(data) {
-        console.log(JSON.stringify(data));
+        // redirect to article page post-edits
+        this.transitionTo('article', {id: this.getParams().id});
       }
     );
-    // this.props.onCommentSubmit({name: name, text: text});
     this.refs.name.getDOMNode().value = '';
     this.refs.text.getDOMNode().value = '';
   },
@@ -44,17 +62,17 @@ var MarkdownEditor = React.createClass({
       <DocumentTitle title={ this.getParams().id }>
       <form className="MarkdownEditor" onSubmit={this.handleSubmit}>
         <h3>Input</h3>
-        <input ref='name' value={ this.getParams().id }/>
+        <input ref='name' value={this.state.name}/>
         <textarea
           onChange={this.handleChange}
           ref="text"
-          defaultValue={this.state.value} />
+          value={this.state.text} />
         <input type="submit" value="Post" />
         <h3>Preview</h3>
         <div
           className="content"
           dangerouslySetInnerHTML={{
-            __html: converter.makeHtml(this.state.value)
+            __html: converter.makeHtml(this.state.text)
           }}
         />
       </form>
@@ -63,50 +81,4 @@ var MarkdownEditor = React.createClass({
   }
 });
 
-// var PreviewButton = React.createClass({
-//   handleClick: function(event) {
-
-//   },
-//   render: function() {
-//     return (
-//       <button onClick={this.handleClick}>
-//         Preview Edits
-//       </button>
-//     );
-//   }
-// });
-
 module.exports = MarkdownEditor;
-
-
-// var EditForm = React.createClass({
-//   handleSubmit: function(e) {
-//     e.preventDefault();
-//     var name = this.refs.name.getDOMNode().value.trim();
-//     var text = this.refs.text.getDOMNode().value.trim();
-//     if (!text || !name) {
-//       return;
-//     }
-//     $.post(
-//       '/article/'+name+'/edit',
-//       {name: name, text: text},
-//       function(data) {
-//         console.log(data.article.name);
-//       }
-//     );
-//     // this.props.onCommentSubmit({name: name, text: text});
-//     this.refs.name.getDOMNode().value = '';
-//     this.refs.text.getDOMNode().value = '';
-//   },
-//   render: function() {
-//     return (
-//       <form className="commentForm" onSubmit={this.handleSubmit}>
-//         <input type="text" placeholder="Article name" ref="name" />
-//         <textarea type="text" placeholder="Compose an article..." ref="text" />
-//         <input type="submit" value="Post" />
-//       </form>
-//     );
-//   }
-// });
-
-// module.exports = EditForm;

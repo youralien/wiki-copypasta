@@ -24,7 +24,7 @@ var ArticleList = React.createClass({
   },
   componentDidMount: function() {
     this.loadArticlesFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    setInterval(this.loadCommentsFromServer, 10000);
   },
   render: function() {
     var links = this.state.data.map(function(article) {
