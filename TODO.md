@@ -15,26 +15,27 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 ###Doing:
 
 - Meet Friday at 10 pm
-- Hooking in Mongo Pages model into React
- - Article
- - ArticleList
+- Edit form fill in name and current text
+- Document each component
+
 
 ### Regular Priority:
 
-- Make ArticleList separate View
-- Edit form fill in name and current text
-- Article fill in name and current text
+- Edit form CSS
 - Consider tags vs search bar
-- Document each component
 
 
 ###Low priority:
 
 - push copypastas into database
-- Edit form CSS
 
 ###Done:
 
+- Article fill in name and current text
+- Make ArticleList separate View
+- Hooking in Mongo Pages model into React
+ - Article
+ - ArticleList
 - Meet Thursday at 10 pm
 - Create React components for the Wiki pages:
  - ArticleList
