@@ -7,18 +7,21 @@ var DefaultRoute  = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 
 /* Components */
-var App      = require('./components/App.jsx');
-var Index    = require('./components/Index.jsx');
-var Place    = require('./components/Place.jsx');
-var Article  = require('./components/Article.jsx');
-var NotFound = require('./components/NotFound.jsx');
-var Edit     = require('./components/Edit.jsx')
+var App         = require('./components/App.jsx');
+var Index       = require('./components/Index.jsx');
+var Place       = require('./components/Place.jsx');
+var Article     = require('./components/Article.jsx');
+var ArticleList = require('./components/ArticleList.jsx');
+var NotFound    = require('./components/NotFound.jsx');
+var Edit        = require('./components/Edit.jsx')
 
 var routes = (
   <Route name="places" path="/" handler={App}>
     <DefaultRoute name="index" handler={Index} />
     <Route name="place" path="place/:id" handler={Place} />
+    <Route name="articleList" path="articles" handler={ArticleList} />
     <Route name="article" path="article/:id" handler={Article} />
+    <Route name="articleslash" path="article/:id/" handler={Article} /> //TODO: Replace hotfix with more generalized system
     <Route name='edit' path='article/:id/edit' handler={Edit} />
     <NotFoundRoute name="notfound" handler={ NotFound }/>
   </Route>

@@ -24,20 +24,13 @@ var App = React.createClass({
   },
 
   render: function () {
-    var links = this.props.places.map(function (place) {
-      return (
-        <li key={"place-" + place.id}>
-          <Link to="place" params={{ id: place.id }}>{place.name}</Link>
-        </li>
-      );
-    });
     return (
       <DocumentTitle title={ title }>
         <div className="app">
           <h1>{ title }</h1>
           <ul className="master">
-            { links }
-            <Link to="index"><small>(back to index)</small></Link>
+            <li><Link to="index"><small>(back to index)</small></Link></li>
+            <li><Link to="articleList">List of All Articles</Link></li>
           </ul>
           <div className="detail">
             <RouteHandler />

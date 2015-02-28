@@ -4,6 +4,7 @@ var errorHandler = require('./errorHandler');
 var listArticles = function(req, res) {
 	Article
 	.find({})
+	.select('name')
 	.sort('createdOn')
 	.exec(function(err, articles) {
 		if (err) errorHandler(err, req, res);
