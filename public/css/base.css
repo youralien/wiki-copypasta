@@ -32,7 +32,8 @@ code {
 }
 
 h1, h2, h3, h4 {
-  font-weight: bold;
+  font-family: 'Italiana', serif;
+  font-weight: 400;
   margin: 0 0 15px;
   padding: 0;
 }
@@ -40,7 +41,7 @@ h1, h2, h3, h4 {
 h1 {
   border-bottom: 1px solid #ddd;
   font-size: 2.5em;
-  font-weight: bold;
+  font-weight: 400;
   margin: 0 0 15px;
   padding: 0;
 }
@@ -66,8 +67,7 @@ ul {
   padding-left: 30px;
 }
 
-.master
-{
+.master {
   float: left;
   padding-right: 30px;
 }
@@ -76,3 +76,7 @@ ul {
   float: left; width:70%;}
   .detail img {
     width: 600px; }
+
+.pasta-icon {
+  width: 128px;
+}
