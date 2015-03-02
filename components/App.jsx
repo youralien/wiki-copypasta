@@ -29,7 +29,7 @@ var App = React.createClass({
     return (
       <DocumentTitle title={ title }>
         <div className="app">
-          <h1>{ title }</h1>
+          <h1 className='maintitle'>{ title }</h1>
           <ul className="master">
             <Link to="index"><img className="pasta-icon" src="/images/pasta-icon.png"></img></Link>
             <li><Link to="articleList">List of All Articles</Link></li>
