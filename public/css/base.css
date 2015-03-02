@@ -102,3 +102,8 @@ ul {
 .pasta-icon {
   width: 128px;
 }
+
+textarea {
+  height: 15em;
+  width: 100%;
+}
