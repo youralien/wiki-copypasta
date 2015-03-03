@@ -18,6 +18,7 @@ render: function() {
       <html>
       <head>
         <title>{ this.props.title }</title>
+        <link href='http://fonts.googleapis.com/css?family=Italiana' rel='stylesheet' type='text/css' />
         <link rel="icon" type="image/png" href="/images/favicon.png" />
         <link rel="stylesheet" href="/css/base.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>

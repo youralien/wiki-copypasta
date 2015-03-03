@@ -38,14 +38,21 @@ var ArticleList = React.createClass({
     var links = this.state.data.map(function(article) {
       return (
         <li>
-          <Link to="article" params={{id: article.name}}>{article.name}</Link>
+          <Link to="article" params={{id: article.name}} >{article.name}</Link>
         </li>
       );
     });
     return (
-      <ul className="master">
-        {links}
-      </ul>
+      <DocumentTitle title ="List of Articles - Pastapedia">
+        <div className="articlelist">
+          <div className="articletitle">
+            <h2 className='articletitle'>List of Articles</h2>
+          </div>
+          <ul className="master list-group">
+            {links}
+          </ul>
+        </div>
+      </DocumentTitle>
     );
   }
 });

@@ -57,7 +57,7 @@ var Article = React.createClass({
       <DocumentTitle title ={ this.getParams().id+" - Pastapedia" }>
         <div className="article">
           <div className="articletitle">
-            <h2>{ this.getParams().id }</h2>
+            <h2 className='articletitle'>{ this.getParams().id }</h2>
           </div>
           <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
           <div className="editlink">

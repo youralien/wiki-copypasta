@@ -10,10 +10,15 @@ body {
   line-height: 1.7;
   margin: 0;
   padding: 30px;
+  
+}
+
+html {
+  height: 100%;
 }
 
 a {
-  color: #4183c4;
+  /*color: #4183c4;*/
   text-decoration: none;
 }
 
@@ -32,7 +37,8 @@ code {
 }
 
 h1, h2, h3, h4 {
-  font-weight: bold;
+  font-family: 'Italiana', serif;
+  font-weight: 400;
   margin: 0 0 15px;
   padding: 0;
 }
@@ -40,7 +46,7 @@ h1, h2, h3, h4 {
 h1 {
   border-bottom: 1px solid #ddd;
   font-size: 2.5em;
-  font-weight: bold;
+  font-weight: 400;
   margin: 0 0 15px;
   padding: 0;
 }
@@ -58,6 +64,23 @@ h4 {
   font-size: 1.2em;
 }
 
+.maintitle {
+  background-image: url('/images/pasta-board.jpg');
+  /*background-repeat: no-repeat;*/
+  width: 100%;
+  border-radius: 10px;
+  color: #FFFFFF;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.articletitle {
+  background-image: url('/images/pasta-board.jpg');
+  width: 100%;
+  border-radius: 10px;
+  color: #FFFFFF;
+  background-color: rgba(0,0,0,0.75);
+}
+
 p, ul {
   margin: 15px 0;
 }
@@ -66,8 +89,7 @@ ul {
   padding-left: 30px;
 }
 
-.master
-{
+.master {
   float: left;
   padding-right: 30px;
 }
@@ -76,3 +98,12 @@ ul {
   float: left; width:70%;}
   .detail img {
     width: 600px; }
+
+.pasta-icon {
+  width: 128px;
+}
+
+textarea {
+  height: 15em;
+  width: 100%;
+}
