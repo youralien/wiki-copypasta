@@ -1,3 +1,11 @@
+/*
+ArticleList is a react component which will render a list of existing article
+links.  It depends on React-Router to handle client-side routing to these
+particular article links. It has the following special methods:
+
+  - loadArticlesFromServer - will make an ajax get request for the list of article names
+ */
+
 'use strict';
 
 var React         = require('react');

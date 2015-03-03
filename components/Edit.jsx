@@ -1,3 +1,11 @@
+/*
+Edit.jsx
+A react component which is used in all our edit routes.  It has the following features:
+
+1. Dynamic Markdown Preview
+2. POST request for editing / creating an Article
+3. Redirect to newly-edited article after the submit
+ */
 'use strict';
 
 var React         = require('react');

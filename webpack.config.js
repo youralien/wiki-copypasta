@@ -1,4 +1,14 @@
-// Webpack configuration to use with the build task.
+/*
+Webpack configuration to use with the build task.
+
+For those unfamiliar with webpack, it is a module bundler.  We use it here to
+bundle all the jsx files for react and react-router into two minified files:
+  - js/lib.js which contains our npm library dependencies
+  - js/main.js which contains the dependency tree of our own jsx files
+
+It takes client.jsx as the single entry point to all our react-router and
+react components.
+ */ 
 
 var webpack = require('webpack');
 var path    = require('path');
