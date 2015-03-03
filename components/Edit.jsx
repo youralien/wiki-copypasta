@@ -64,7 +64,7 @@ var MarkdownEditor = React.createClass({
         <div className="articletitle">
           <h2 className='articletitle'>{ this.getParams().id }</h2>
         </div>
-        <input type='hidden' ref='name' value={this.state.name}/>
+        <input type='hidden' ref='name' value={ this.getParams().id }/>
         <textarea
           onChange={this.handleChange}
           ref="text"
